@@ -24,7 +24,7 @@ const chooseUsData = [
 
 const ChooseUs = () => {
     return (
-        <section className='mb-5'>
+        <section className='mb-5 pb-5'>
             <div className='text-center mb-5'>
                 <h1>Why Choose Us</h1>
                 <p>fastest repair service with best price</p>

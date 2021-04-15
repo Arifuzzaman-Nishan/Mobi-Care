@@ -21,6 +21,7 @@ const serviceData = [
     
 ]
 const Service = () => {
+    
     return (
         <section className='mb-5 pb-5'>
             <h1 className='text-center mb-5'>Our Service</h1>  

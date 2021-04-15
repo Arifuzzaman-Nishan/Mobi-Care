@@ -1,7 +1,9 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 
 const ServiceCard = ({ service }) => {
+    const history = useHistory();
     return (
         <Col className='mb-5' md={4}>
             <Card className='' style={{ width: '18rem' }}>

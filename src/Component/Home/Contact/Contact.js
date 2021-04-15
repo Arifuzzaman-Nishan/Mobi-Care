@@ -4,7 +4,7 @@ import './Contact.css';
 
 const Contact = () => {
     return (
-        <section className='my-5 py-5 bg'>
+        <section className='mt-5 pt-5 pb-5 bg'>
             <Container>
                 <Row>
                     <Col className='text-white' md={6}>

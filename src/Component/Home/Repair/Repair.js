@@ -25,8 +25,8 @@ const repairData = [
 
 const Repair = () => {
     return (
-        <section>
-            <div className='text-center mt-5'>
+        <section className='mt-5 mb-5 py-5'>
+            <div className='text-center'>
                 <h1>WE REPAIR</h1>
             </div>
             <Container>

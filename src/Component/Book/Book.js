@@ -31,15 +31,18 @@ const Book = () => {
     return (
         <div>
             <NavBar></NavBar>
-            <Row>
-                <Col md={2}>
+            <Row >
+                <Col className='' md={2}>
                     <SideBar id={id}></SideBar>
                 </Col>
-                <Col md={10}>
+                <Col className='p-5' md={10}>
+                    <h1 className='text-danger'>Book</h1>
                     <div>
-                        <h5>{displayName}</h5>
-                        <h5>{email}</h5>
-                        <h5>{specificService.name}</h5>
+                        <div className='text-primary'>
+                            <h6 className='mb-3 mt-5'>{displayName}</h6>
+                            <h6 className='mb-3'>{email}</h6>
+                            <h6 className='mb-3'>{specificService.name}</h6>
+                        </div>
                         <br />
                         <Elements stripe={stripePromise}>
                             <ProcessPayment></ProcessPayment>

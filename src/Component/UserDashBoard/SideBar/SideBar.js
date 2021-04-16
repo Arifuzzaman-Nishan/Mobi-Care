@@ -8,23 +8,23 @@ import { Container } from 'react-bootstrap';
 
 const SideBar = ({id}) => {
     return (
-        <div style={{height:'100vh'}} className='sidebar d-flex flex-row py-5 px-4'>
+        <div  className='sidebar pt-5 px-4'>
             {/* <Container> */}
                 <ul className='list-unstyled'>
                     <li >
-                        <Link className='text-white' to={`/userdashboard/book/${id}`}>
+                        <Link className='text-dark'  to={`/userdashboard/book/${id}`}>
                             <FontAwesomeIcon icon={faShoppingCart}/>
                             Book
                         </Link>
                     </li>
                     <li>
-                        <Link className='text-white' to="/userdashboard/booklist">
+                        <Link className='text-dark'  to="/userdashboard/booklist">
                             <FontAwesomeIcon icon={faThList}/>
                             Booking list
                         </Link>
                     </li>
                     <li>
-                        <Link className='text-white' to="/userdashboard/review">
+                        <Link className='text-dark'  to="/userdashboard/review">
                             <FontAwesomeIcon icon={faCommentDots}/>
                             Review
                         </Link>

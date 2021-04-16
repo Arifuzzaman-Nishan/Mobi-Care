@@ -80,7 +80,7 @@ const ProcessPayment = () => {
             <br/>
             <label>
                 Expiration date
-                <CardExpiryElement
+                <CardExpiryElement 
                     options={options}
                     onReady={() => {
                         console.log("CardNumberElement [ready]");

@@ -7,6 +7,7 @@ import {
     useHistory
 } from "react-router-dom";
 import { userContext } from '../../../App';
+import jwt_decode from "jwt-decode";
 
 
 const NavBar = () => {
@@ -15,7 +16,19 @@ const NavBar = () => {
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
     const { email, photoURL } = loggedInUser;
 
-    const token = sessionStorage.getItem('token');
+    const isLoggedIn = () => {
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            return false;
+        }
+        const decodedToken = jwt_decode(token);
+        // get current time
+        const currentTime = new Date().getTime() / 1000;
+        // compare the expiration time with the current time
+        // will return false if expired and will return true if not expired
+        return decodedToken.exp > currentTime;
+    }
+
     const img = sessionStorage.getItem('img');
     
 
@@ -40,7 +53,7 @@ const NavBar = () => {
                 </Nav>
                 
                 {
-                        (email || token) ?
+                        (email ||  isLoggedIn) ?
                             <div className="p-2">
 
                                 <img className="mr-5"

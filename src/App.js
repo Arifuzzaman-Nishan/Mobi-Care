@@ -13,6 +13,7 @@ import UserDashBoard from './Component/UserDashBoard/UserDashBoard/UserDashBoard
 import Login from './Component/Login/Login/Login';
 import PrivateRoute from './Component/Login/PrivateRoute/PrivateRoute';
 import Book from './Component/UserDashBoard/Book/Book';
+import BookList from './Component/UserDashBoard/BookList/BookList';
 
 
 
@@ -32,6 +33,9 @@ const App = () => {
           <PrivateRoute path='/userdashboard/book/:id'>
             <Book></Book>
           </PrivateRoute>
+          <Route path='/userdashboard/booklist'>
+            <BookList></BookList>
+          </Route>
           <Route path='/login'>
             <Login></Login>
           </Route>

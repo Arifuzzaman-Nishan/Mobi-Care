@@ -41,7 +41,7 @@ const useOptions = () => {
 
 const ProcessPayment = ({ specificService }) => {
 
-    const { name, img, price } = specificService;
+    const { name, img, price,description } = specificService;
 
     const stripe = useStripe();
     const elements = useElements();
@@ -90,7 +90,8 @@ const ProcessPayment = ({ specificService }) => {
             email: loggedInUser.email,
             img: img,
             serviceName: name,
-            price: price
+            price: price,
+            description: description
         }
         // setOrder(newOrder);
 

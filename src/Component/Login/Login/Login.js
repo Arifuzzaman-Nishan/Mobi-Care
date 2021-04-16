@@ -9,6 +9,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { useHistory, useLocation } from 'react-router';
 import { userContext } from '../../../App';
+import NavBar from '../../Shared/NavBar/NavBar';
 
 
 if (!firebase.apps.length) {
@@ -53,6 +54,7 @@ const Login = () => {
 
     return (
         <div>
+            <NavBar></NavBar>
             <Container>
                 <Row style={{ height: '100vh' }} className='d-flex justify-content-center align-items-center'>
                     <Col md={4}>

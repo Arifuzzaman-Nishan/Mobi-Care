@@ -1,9 +1,11 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useParams } from 'react-router';
 import NavBar from '../../Shared/NavBar/NavBar';
 import SideBar from '../SideBar/SideBar';
 
 const UserDashBoard = () => {
+    
     return (
         <div>
             <NavBar></NavBar>

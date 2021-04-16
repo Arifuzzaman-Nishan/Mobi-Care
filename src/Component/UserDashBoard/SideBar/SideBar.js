@@ -6,13 +6,13 @@ import { faCommentDots } from '@fortawesome/free-regular-svg-icons';
 import './SideBar.css';
 import { Container } from 'react-bootstrap';
 
-const SideBar = () => {
+const SideBar = ({id}) => {
     return (
         <div style={{height:'100vh'}} className='sidebar d-flex flex-row py-5 px-4'>
             {/* <Container> */}
                 <ul className='list-unstyled'>
                     <li >
-                        <Link className='text-white' to="/userdashboard/book">
+                        <Link className='text-white' to={`/userdashboard/book/${id}`}>
                             <FontAwesomeIcon icon={faShoppingCart}/>
                             Book
                         </Link>

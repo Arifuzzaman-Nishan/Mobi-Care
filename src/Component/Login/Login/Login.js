@@ -30,7 +30,7 @@ const Login = () => {
                 const user = result.user;
                 setLoggedInUser(user);
                 sessionStorage.setItem('img', user.photoURL);
-                console.log(user);
+                // console.log(user);
                 storeAuthToken();
             }).catch((error) => {
                 // Handle Errors here.

@@ -29,6 +29,7 @@ const NavBar = () => {
         return decodedToken.exp > currentTime;
     }
 
+
     const img = sessionStorage.getItem('img');
     
 
@@ -53,7 +54,7 @@ const NavBar = () => {
                 </Nav>
                 
                 {
-                        (email ||  isLoggedIn) ?
+                        (email ||  isLoggedIn()) ?
                             <div className="p-2">
 
                                 <img className="mr-5"

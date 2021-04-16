@@ -29,6 +29,7 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setLoggedInUser(user);
+                sessionStorage.setItem('img', user.photoURL);
                 console.log(user);
                 storeAuthToken();
             }).catch((error) => {
@@ -42,13 +43,13 @@ const Login = () => {
 
     const storeAuthToken = () => {
         firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
-          .then(function (idToken) {
-            sessionStorage.setItem('token', idToken);
-            history.replace(from);
-          }).catch(function (error) {
-            // Handle error
-          });
-      }
+            .then((idToken) => {
+                sessionStorage.setItem('token', idToken);
+                history.replace(from);
+            }).catch((error) => {
+                // Handle error
+            });
+    }
 
     return (
         <div>

@@ -12,7 +12,7 @@ import Home from './Component/Home/Home/Home';
 import UserDashBoard from './Component/UserDashBoard/UserDashBoard/UserDashBoard';
 import Login from './Component/Login/Login/Login';
 import PrivateRoute from './Component/Login/PrivateRoute/PrivateRoute';
-import Book from './Component/Book/Book';
+import Book from './Component/UserDashBoard/Book/Book';
 
 
 

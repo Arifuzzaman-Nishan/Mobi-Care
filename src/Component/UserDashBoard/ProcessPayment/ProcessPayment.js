@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import {
     useStripe,
     useElements,
@@ -7,16 +7,17 @@ import {
     CardExpiryElement
 } from "@stripe/react-stripe-js";
 
-// import useResponsiveFontSize from "../../useResponsiveFontSize";
 import './ProcessPayment.css';
+import { userContext } from "../../../App";
+
 
 const useOptions = () => {
-    // const fontSize = useResponsiveFontSize();
+
     const options = useMemo(
         () => ({
             style: {
                 base: {
-                    fontSize:'16px',
+                    fontSize: '16px',
                     color: "#424770",
                     letterSpacing: "0.025em",
                     fontFamily: "Source Code Pro, monospace",
@@ -36,12 +37,23 @@ const useOptions = () => {
 };
 
 
-const ProcessPayment = () => {
+
+
+const ProcessPayment = ({ specificService }) => {
+
+    const { name, img, price } = specificService;
+
     const stripe = useStripe();
     const elements = useElements();
     const options = useOptions();
 
-    const handleSubmit = async event => {
+    const [loggedInUser, setLoggedInUser] = useContext(userContext);
+
+    const [paymentError, setPaymentError] = useState(null);
+    const [paymentSuccess, setPaymentSuccess] = useState(null);
+
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         if (!stripe || !elements) {
@@ -50,76 +62,90 @@ const ProcessPayment = () => {
             return;
         }
 
-        const payload = await stripe.createPaymentMethod({
-            type: "card",
-            card: elements.getElement(CardNumberElement)
+        const cardElement = elements.getElement(CardNumberElement);
+
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: 'card',
+            card: cardElement
         });
-        console.log("[PaymentMethod]", payload);
+
+        if (error) {
+            // console.log('[error]', error);
+            setPaymentError(error.message);
+            setPaymentSuccess(null);
+        } else {
+            // console.log('[PaymentMethod]', paymentMethod);
+            setPaymentSuccess(paymentMethod.id);
+            setPaymentError(null);
+            elements.getElement(CardNumberElement).clear();
+            elements.getElement(CardExpiryElement).clear();
+            elements.getElement(CardCvcElement).clear();
+        }
+
     };
 
+    useEffect(() => {
+        // let newOrder = {...order};
+        const newOrder = {
+            email: loggedInUser.email,
+            img: img,
+            serviceName: name,
+            price: price
+        }
+        // setOrder(newOrder);
+
+        if (paymentSuccess) {
+            fetch('http://localhost:5000/orders', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(newOrder)
+            })
+                .then(result => {
+                    if (result) {
+                        alert('successfully inserted');
+                    }
+                })
+        }
+    }, [paymentSuccess])
+
+
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Card number
-                <CardNumberElement
-                    options={options}
-                    onReady={() => {
-                        console.log("CardNumberElement [ready]");
-                    }}
-                    onChange={event => {
-                        console.log("CardNumberElement [change]", event);
-                    }}
-                    onBlur={() => {
-                        console.log("CardNumberElement [blur]");
-                    }}
-                    onFocus={() => {
-                        console.log("CardNumberElement [focus]");
-                    }}
-                />
-            </label>
-            <br/>
-            <label>
-                Expiration date
-                <CardExpiryElement 
-                    options={options}
-                    onReady={() => {
-                        console.log("CardNumberElement [ready]");
-                    }}
-                    onChange={event => {
-                        console.log("CardNumberElement [change]", event);
-                    }}
-                    onBlur={() => {
-                        console.log("CardNumberElement [blur]");
-                    }}
-                    onFocus={() => {
-                        console.log("CardNumberElement [focus]");
-                    }}
-                />
-            </label>
-            <br/>
-            <label>
-                CVC
-                <CardCvcElement
-                    options={options}
-                    onReady={() => {
-                        console.log("CardNumberElement [ready]");
-                    }}
-                    onChange={event => {
-                        console.log("CardNumberElement [change]", event);
-                    }}
-                    onBlur={() => {
-                        console.log("CardNumberElement [blur]");
-                    }}
-                    onFocus={() => {
-                        console.log("CardNumberElement [focus]");
-                    }}
-                />
-            </label>
-            <br/>
-            <button type="submit" disabled={!stripe}>
-                Pay
+        <>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Card number
+                <CardNumberElement options={options} />
+                </label>
+                <br />
+                <label>
+                    Expiration date
+                <CardExpiryElement options={options} />
+                </label>
+                <br />
+                <label>
+                    CVC
+                <CardCvcElement options={options} />
+                </label>
+                <br />
+                <button type="submit" disabled={!stripe}>
+                    Pay
             </button>
-        </form>
+            </form>
+            {
+                paymentError &&
+                <div class="mt-4 alert alert-danger">
+                    <strong className='mr-3'>Error!</strong>
+                    {paymentError}
+                </div>
+            }
+            {
+                paymentSuccess &&
+                <div class="mt-4 alert alert-success">
+                    <strong className='mr-3'>Successfully</strong>
+                Payment done
+                </div>
+            }
+        </>
     );
 };
 

@@ -84,7 +84,7 @@ const ProcessPayment = ({ specificService }) => {
                 description: description,
                 // brand: paymentMethod.card.brand,
                 funding: paymentMethod.card.funding,
-                status: 'Pending'
+                status: 'pending'
             }
 
             successFullPayment(newOrder);

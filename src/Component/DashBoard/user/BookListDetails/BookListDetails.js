@@ -12,7 +12,7 @@ const BookListDetails = ({ bookList }) => {
             <Card style={{height:'30vh'}} className='p-4'>
                 <div className='d-flex justify-content-between'>
                     <img style={{ width: '6rem', borderRadius: "" }} src={img} alt="" />
-                    <h6 className={`style btn border text-center text-white bg-${status}`}>{status}</h6>
+                    <h6 className={`style text-white btn border text-center bg-${status}`}>{status}</h6>
                 </div>
                 <Card.Title>{serviceName}</Card.Title>
                 <Card.Text>

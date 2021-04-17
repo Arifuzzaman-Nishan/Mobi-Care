@@ -81,7 +81,7 @@ const ProcessPayment = ({ specificService }) => {
                 img: img,
                 serviceName: name,
                 // price: price,
-                // description: description,
+                description: description,
                 // brand: paymentMethod.card.brand,
                 funding: paymentMethod.card.funding,
                 status: 'Pending'

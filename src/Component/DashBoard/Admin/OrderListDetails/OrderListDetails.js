@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 
 const OrderListDetails = ({ allOrder }) => {
     console.log(allOrder)
-    const {_id, name, email, serviceName, funding } = allOrder;
+    const {_id, name, email, serviceName, funding,status } = allOrder;
 
     const handleChange = (e) => {
-        console.log(e.target.name,e.target.value);
 
         fetch(`http://localhost:5000/update/${_id}`,{
             method: 'PATCH',
@@ -16,7 +15,7 @@ const OrderListDetails = ({ allOrder }) => {
         })
         .then(res => res.json())
         .then(data => {
-            alert('successfully updated');
+            // alert('successfully updated');
             window.location.reload();
         })
 
@@ -30,7 +29,7 @@ const OrderListDetails = ({ allOrder }) => {
                 <td>{serviceName}</td>
                 <td>{funding}</td>
                 <td>
-                    <select onChange={handleChange} className='form-control' id="cars" name="status">
+                    <select onChange={handleChange} value={status} className='form-control' id="cars" name="status">
                         <option className='text-danger' value="pending">Pending</option>
                         <option className='text-warning' value="ongoing">On going</option>
                         <option className='text-success' value="done">Done</option>

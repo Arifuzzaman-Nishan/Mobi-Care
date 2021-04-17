@@ -1,0 +1,14 @@
+.bg-pending{
+    background-color:#d9534f !important
+}
+.bg-ongoing{
+    background-color:#f0ad4e !important
+}
+.bg-done{
+    background-color:#5cb85c !important
+}
+.style{
+    height: 40px;
+    /* width: 5rem; */
+    border-radius: 7px;
+}

@@ -30,6 +30,8 @@ const Book = () => {
             })
     }, [id])
 
+    
+
     return (
         <div>
             <NavBar></NavBar>

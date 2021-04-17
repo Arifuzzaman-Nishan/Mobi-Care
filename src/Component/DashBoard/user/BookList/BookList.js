@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { userContext } from '../../../App';
-import NavBar from '../../Shared/NavBar/NavBar';
+import { userContext } from '../../../../App';
+import NavBar from '../../../Shared/NavBar/NavBar';
 import BookListDetails from '../BookListDetails/BookListDetails';
-import SideBar from '../SideBar/SideBar';
+import SideBar from '../../SideBar/SideBar';
 
 const BookList = () => {
 

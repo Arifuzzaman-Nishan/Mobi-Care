@@ -9,13 +9,16 @@ import {
   Link
 } from "react-router-dom";
 import Home from './Component/Home/Home/Home';
-import UserDashBoard from './Component/UserDashBoard/UserDashBoard/UserDashBoard';
 import Login from './Component/Login/Login/Login';
 import PrivateRoute from './Component/Login/PrivateRoute/PrivateRoute';
-import Book from './Component/UserDashBoard/Book/Book';
-import BookList from './Component/UserDashBoard/BookList/BookList';
-import Review from './Component/UserDashBoard/Review/Review';
+import Book from './Component/DashBoard/user/Book/Book';
+import BookList from './Component/DashBoard/user/BookList/BookList';
+import Review from './Component/DashBoard/user/Review/Review';
+import OrderList from './Component/DashBoard/Admin/OrderList/OrderList';
+import AddService from './Component/DashBoard/Admin/AddService/AddService';
+import MakeAdmin from './Component/DashBoard/Admin/MakeAdmin/MakeAdmin';
 
+import ManageService from './Component/DashBoard/Admin/ManageService/ManageService';
 
 
 
@@ -31,14 +34,26 @@ const App = () => {
           <Route path='/home'>
             <Home></Home>
           </Route>
-          <PrivateRoute path='/userdashboard/book/:id'>
+          <PrivateRoute path='/DashBoard/book/:id'>
             <Book></Book>
           </PrivateRoute>
-          <PrivateRoute path='/userdashboard/booklist'>
+          <PrivateRoute path='/DashBoard/review'>
+            <Review></Review>
+          </PrivateRoute>
+          <PrivateRoute path='/DashBoard/booklist'>
             <BookList></BookList>
           </PrivateRoute>
-          <PrivateRoute path='/userdashboard/review'>
-            <Review></Review>
+          <PrivateRoute path='/DashBoard/orderlist'>
+            <OrderList></OrderList>
+          </PrivateRoute>
+          <PrivateRoute path='/DashBoard/addservice'>
+            <AddService></AddService>
+          </PrivateRoute>
+          <PrivateRoute path='/DashBoard/makeadmin'>
+            <MakeAdmin></MakeAdmin>
+          </PrivateRoute>
+          <PrivateRoute path='/DashBoard/manageservice'>
+            <ManageService></ManageService>
           </PrivateRoute>
           <Route path='/login'>
             <Login></Login>

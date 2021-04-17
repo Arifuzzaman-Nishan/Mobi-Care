@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import NavBar from '../../Shared/NavBar/NavBar';
-import SideBar from '../SideBar/SideBar';
+
+
 import { useForm } from "react-hook-form";
-import { userContext } from '../../../App';
+import NavBar from '../../../Shared/NavBar/NavBar';
+import SideBar from '../../SideBar/SideBar';
 
 const Review = () => {
 

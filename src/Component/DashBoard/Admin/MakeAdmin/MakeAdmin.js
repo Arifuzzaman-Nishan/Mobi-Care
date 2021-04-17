@@ -1,11 +1,9 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useParams } from 'react-router';
-import NavBar from '../../Shared/NavBar/NavBar';
-import SideBar from '../SideBar/SideBar';
+import NavBar from '../../../Shared/NavBar/NavBar';
+import SideBar from '../../SideBar/SideBar';
 
-const UserDashBoard = () => {
-    
+const MakeAdmin = () => {
     return (
         <div>
             <NavBar></NavBar>
@@ -14,11 +12,11 @@ const UserDashBoard = () => {
                     <SideBar></SideBar>
                 </Col>
                 <Col md={10}>
-                    
+
                 </Col>
             </Row>
         </div>
     );
 };
 
-export default UserDashBoard;
+export default MakeAdmin;

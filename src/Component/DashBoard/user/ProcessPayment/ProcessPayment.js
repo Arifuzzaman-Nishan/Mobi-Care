@@ -8,7 +8,8 @@ import {
 } from "@stripe/react-stripe-js";
 
 import './ProcessPayment.css';
-import { userContext } from "../../../App";
+import { userContext } from "../../../../App";
+
 
 
 const useOptions = () => {
@@ -75,13 +76,15 @@ const ProcessPayment = ({ specificService }) => {
             setPaymentSuccess(paymentMethod.id);
 
             const newOrder = {
+                name: sessionStorage.getItem('name'),
                 email: sessionStorage.getItem('email'),
                 img: img,
                 serviceName: name,
-                price: price,
-                description: description,
-                brand: paymentMethod.card.brand,
-                funding: paymentMethod.card.funding
+                // price: price,
+                // description: description,
+                // brand: paymentMethod.card.brand,
+                funding: paymentMethod.card.funding,
+                status: 'Pending'
             }
 
             successFullPayment(newOrder);
@@ -136,6 +139,7 @@ const ProcessPayment = ({ specificService }) => {
                 <CardCvcElement options={options} />
                 </label>
                 <br />
+                <h6 className='text-success'>Your Service charged will be {price}</h6>
                 <button type="submit" disabled={!stripe}>
                     Pay
             </button>

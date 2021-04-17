@@ -3,10 +3,12 @@ import { loadStripe } from '@stripe/stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
-import { userContext } from '../../../App';
-import NavBar from '../../Shared/NavBar/NavBar';
+
+import NavBar from '../../../Shared/NavBar/NavBar';
+
+import SideBar from '../../SideBar/SideBar';
+import { userContext } from '../../../../App';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
-import SideBar from '../SideBar/SideBar';
 
 
 const stripePromise = loadStripe('pk_test_51IeR1DBqk7A6FGoihILlnb6K5upwovEy0jozWTRMbXdZWyFnKbErD5cHHuKJFNQWZvKAtvcnwOnKg42JHN7keTSg00ViHYTScT');
@@ -44,6 +46,7 @@ const Book = () => {
                             <h6 className='mb-3'>{specificService.name}</h6>
                         </div>
                         <br />
+                        
                         <Elements stripe={stripePromise}>
                             <ProcessPayment specificService={specificService}></ProcessPayment>
                         </Elements>

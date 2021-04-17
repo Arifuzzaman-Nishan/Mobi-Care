@@ -68,10 +68,9 @@ const NavBar = () => {
                             </div>
                             :
                             <div className="mr-4">
-                                <Button onClick={() => history.push('/login')} variant="outline-success">LogIn</Button>
+                                <Button onClick={() => history.push('/DashBoard/booklist')}  variant="outline-success">LogIn</Button>
                             </div>
                     }
-                {/* <Button onClick={() => history.push('/login')} className='mr-5' variant="outline-success">LogIn</Button> */}
             </Navbar.Collapse>
         </Navbar>
     );

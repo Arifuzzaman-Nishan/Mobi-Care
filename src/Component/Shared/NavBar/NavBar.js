@@ -37,6 +37,8 @@ const NavBar = () => {
          setLoggedInUser({});
          sessionStorage.removeItem('token');
          sessionStorage.removeItem('img');
+         sessionStorage.removeItem('name');
+         sessionStorage.removeItem('email');
     }
 
 

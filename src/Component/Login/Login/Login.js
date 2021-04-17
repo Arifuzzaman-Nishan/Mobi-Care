@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import './Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,6 +23,11 @@ const Login = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
+    // const [newLoggedInUser,setNewLoggedInUser] = useState({
+    //     name:'',
+    //     email:''
+    // })
+    // setLoggedInUser(newLoggedInUser);
     const handleGoogleSignIn = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth()
@@ -30,7 +35,11 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setLoggedInUser(user);
+                
                 sessionStorage.setItem('img', user.photoURL);
+                sessionStorage.setItem('email', user.email);
+                sessionStorage.setItem('name', user.displayName);
+
                 // console.log(user);
                 storeAuthToken();
             }).catch((error) => {
@@ -41,6 +50,8 @@ const Login = () => {
 
             });
     }
+
+    console.log(loggedInUser);
 
     const storeAuthToken = () => {
         firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)

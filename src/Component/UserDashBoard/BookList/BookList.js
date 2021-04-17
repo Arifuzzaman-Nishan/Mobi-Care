@@ -10,16 +10,17 @@ const BookList = () => {
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
     const [bookLists, setBookLists] = useState([]);
+    const email = sessionStorage.getItem('email');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/showOrder?email=${loggedInUser.email}`)
+        fetch(`http://localhost:5000/showOrder?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 setBookLists(data);
             })
-    }, [loggedInUser.email])
+    }, [email])
 
-    console.log(bookLists);
+    // console.log(bookLists);
 
     return (
         <div>

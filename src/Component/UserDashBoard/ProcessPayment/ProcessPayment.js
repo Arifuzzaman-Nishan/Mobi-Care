@@ -41,7 +41,7 @@ const useOptions = () => {
 
 const ProcessPayment = ({ specificService }) => {
 
-    const { name, img, price,description } = specificService;
+    const { name, img, price, description } = specificService;
 
     const stripe = useStripe();
     const elements = useElements();
@@ -57,8 +57,6 @@ const ProcessPayment = ({ specificService }) => {
         event.preventDefault();
 
         if (!stripe || !elements) {
-            // Stripe.js has not loaded yet. Make sure to disable
-            // form submission until Stripe.js has loaded.
             return;
         }
 
@@ -70,13 +68,27 @@ const ProcessPayment = ({ specificService }) => {
         });
 
         if (error) {
-            // console.log('[error]', error);
             setPaymentError(error.message);
             setPaymentSuccess(null);
         } else {
             // console.log('[PaymentMethod]', paymentMethod);
             setPaymentSuccess(paymentMethod.id);
+
+            const newOrder = {
+                email: sessionStorage.getItem('email'),
+                img: img,
+                serviceName: name,
+                price: price,
+                description: description,
+                brand: paymentMethod.card.brand,
+                funding: paymentMethod.card.funding
+            }
+
+            successFullPayment(newOrder);
+
+
             setPaymentError(null);
+
             elements.getElement(CardNumberElement).clear();
             elements.getElement(CardExpiryElement).clear();
             elements.getElement(CardCvcElement).clear();
@@ -84,30 +96,26 @@ const ProcessPayment = ({ specificService }) => {
 
     };
 
-    useEffect(() => {
-        // let newOrder = {...order};
-        const newOrder = {
-            email: loggedInUser.email,
-            img: img,
-            serviceName: name,
-            price: price,
-            description: description
-        }
-        // setOrder(newOrder);
 
-        if (paymentSuccess) {
-            fetch('http://localhost:5000/orders', {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(newOrder)
+
+    const successFullPayment = (newOrder) => {
+        console.log(newOrder);
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newOrder)
+        })
+            .then(result => {
+                if (result) {
+                    // alert('successfully inserted');
+                }
             })
-                .then(result => {
-                    if (result) {
-                        alert('successfully inserted');
-                    }
-                })
-        }
-    }, [paymentSuccess])
+    }
+
+    const handleRemoveText = () => {
+        setPaymentSuccess(null);
+        setPaymentError(null);
+    }
 
 
     return (
@@ -115,7 +123,7 @@ const ProcessPayment = ({ specificService }) => {
             <form onSubmit={handleSubmit}>
                 <label>
                     Card number
-                <CardNumberElement options={options} />
+                <CardNumberElement onFocus={handleRemoveText} options={options} />
                 </label>
                 <br />
                 <label>

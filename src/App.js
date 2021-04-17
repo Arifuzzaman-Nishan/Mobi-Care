@@ -14,6 +14,7 @@ import Login from './Component/Login/Login/Login';
 import PrivateRoute from './Component/Login/PrivateRoute/PrivateRoute';
 import Book from './Component/UserDashBoard/Book/Book';
 import BookList from './Component/UserDashBoard/BookList/BookList';
+import Review from './Component/UserDashBoard/Review/Review';
 
 
 
@@ -33,9 +34,12 @@ const App = () => {
           <PrivateRoute path='/userdashboard/book/:id'>
             <Book></Book>
           </PrivateRoute>
-          <Route path='/userdashboard/booklist'>
+          <PrivateRoute path='/userdashboard/booklist'>
             <BookList></BookList>
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute path='/userdashboard/review'>
+            <Review></Review>
+          </PrivateRoute>
           <Route path='/login'>
             <Login></Login>
           </Route>

@@ -139,7 +139,7 @@ const ProcessPayment = ({ specificService }) => {
                 <CardCvcElement options={options} />
                 </label>
                 <br />
-                <h6 className='text-success'>Your Service charged will be {price}</h6>
+                <h6 className='text-success'>Your Service charged will be ${price}</h6>
                 <button type="submit" disabled={!stripe}>
                     Pay
             </button>

@@ -4,8 +4,6 @@ import { useHistory } from 'react-router';
 
 const ServiceCard = ({ service }) => {
     const history = useHistory();
-    // console.log(service);
-    console.log(history);
     
 
     return (
@@ -15,7 +13,7 @@ const ServiceCard = ({ service }) => {
                 <Card.Body className='text-center'>
                     <Card.Title>{service.name}</Card.Title>
                     <Card.Text>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, corporis.
+                       {service.description}
                     </Card.Text>
                     <Button variant="danger">Order Service</Button>
                 </Card.Body>

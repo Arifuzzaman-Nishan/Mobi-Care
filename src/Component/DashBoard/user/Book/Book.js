@@ -2,7 +2,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 
 import NavBar from '../../../Shared/NavBar/NavBar';
 
@@ -15,8 +15,13 @@ const stripePromise = loadStripe('pk_test_51IeR1DBqk7A6FGoihILlnb6K5upwovEy0jozW
 
 
 const Book = () => {
+    const history = useHistory();
+    
 
     const { id } = useParams();
+
+    
+
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
     const { displayName, email } = loggedInUser;
 

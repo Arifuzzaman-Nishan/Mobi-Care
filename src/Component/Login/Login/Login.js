@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import './Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,11 +23,13 @@ const Login = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
-    // const [newLoggedInUser,setNewLoggedInUser] = useState({
-    //     name:'',
-    //     email:''
-    // })
-    // setLoggedInUser(newLoggedInUser);
+    // const [isAdmin, setIsAdmin] = useState(false);
+
+    // useEffect(() => {
+
+    // }, [])
+
+
     const handleGoogleSignIn = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth()
@@ -35,13 +37,25 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setLoggedInUser(user);
-                
+
                 sessionStorage.setItem('img', user.photoURL);
                 sessionStorage.setItem('email', user.email);
                 sessionStorage.setItem('name', user.displayName);
 
+                fetch('http://localhost:5000/isAdmin', {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ email: sessionStorage.getItem('email') })
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        // setIsAdmin(result);
+                        sessionStorage.setItem("isAdmin", result);
+                        storeAuthToken(result);
+                    })
+
                 // console.log(user);
-                storeAuthToken();
+                
             }).catch((error) => {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -51,13 +65,17 @@ const Login = () => {
             });
     }
 
-    console.log(loggedInUser);
+    // console.log(loggedInUser);
 
-    const storeAuthToken = () => {
+    const storeAuthToken = (result) => {
         firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
             .then((idToken) => {
                 sessionStorage.setItem('token', idToken);
-                history.replace(from);
+                
+                result? history.replace('/Dashboard') : history.replace(from);
+                
+                
+
             }).catch((error) => {
                 // Handle error
             });

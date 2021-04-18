@@ -19,6 +19,7 @@ import AddService from './Component/DashBoard/Admin/AddService/AddService';
 import MakeAdmin from './Component/DashBoard/Admin/MakeAdmin/MakeAdmin';
 
 import ManageService from './Component/DashBoard/Admin/ManageService/ManageService';
+import DashBoard from './Component/DashBoard/DashBoard/DashBoard';
 
 
 
@@ -34,9 +35,11 @@ const App = () => {
           <Route path='/home'>
             <Home></Home>
           </Route>
+
           <PrivateRoute path='/DashBoard/book/:id'>
             <Book></Book>
           </PrivateRoute>
+
           <PrivateRoute path='/DashBoard/review'>
             <Review></Review>
           </PrivateRoute>
@@ -54,6 +57,9 @@ const App = () => {
           </PrivateRoute>
           <PrivateRoute path='/DashBoard/manageservice'>
             <ManageService></ManageService>
+          </PrivateRoute>
+          <PrivateRoute path='/DashBoard'>
+            <DashBoard></DashBoard>
           </PrivateRoute>
           <Route path='/login'>
             <Login></Login>

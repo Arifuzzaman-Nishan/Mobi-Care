@@ -39,6 +39,7 @@ const NavBar = () => {
          sessionStorage.removeItem('img');
          sessionStorage.removeItem('name');
          sessionStorage.removeItem('email');
+         sessionStorage.removeItem('isAdmin');
     }
 
 
@@ -52,7 +53,7 @@ const NavBar = () => {
                     <Nav.Link className='text-white mr-5'><Link to="/about_us">About us</Link></Nav.Link>
                     <Nav.Link className='text-white mr-5'><Link to="/projects">Projects</Link></Nav.Link>
                     <Nav.Link className='text-white mr-5'><Link to="/contact">Contact</Link></Nav.Link>
-                    <Nav.Link className='text-white mr-5'><Link to="/admin">Admin</Link></Nav.Link>
+                    <Nav.Link className='text-white mr-5'><Link to="/Dashboard">Dashboard</Link></Nav.Link>
                 </Nav>
                 
                 {
@@ -68,7 +69,7 @@ const NavBar = () => {
                             </div>
                             :
                             <div className="mr-4">
-                                <Button onClick={() => history.push('/DashBoard/booklist')}  variant="outline-success">LogIn</Button>
+                                <Button onClick={() => history.push('/DashBoard')}  variant="outline-success">LogIn</Button>
                             </div>
                     }
             </Navbar.Collapse>

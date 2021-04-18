@@ -9,6 +9,7 @@ import { userContext } from '../../../App';
 const SideBar = ({ id }) => {
     
     const isAdmin = (sessionStorage.getItem('isAdmin') === 'true');
+    
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
 

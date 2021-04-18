@@ -20,9 +20,12 @@ const Book = () => {
 
     const { id } = useParams();
 
-    
+    const isAdmin = (sessionStorage.getItem('isAdmin') === 'true');
+
+    isAdmin && history.replace('/DashBoard');
 
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
+    
     const { displayName, email } = loggedInUser;
 
     const [specificService, setSpecificService] = useState({});

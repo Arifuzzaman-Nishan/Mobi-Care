@@ -1,9 +1,32 @@
-import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Col, Row, Table } from 'react-bootstrap';
 import NavBar from '../../../Shared/NavBar/NavBar';
 import SideBar from '../../SideBar/SideBar';
+import ManageOrderDetails from '../ManageOrderDetails/ManageOrderDetails';
+import ManageServiceDetails from '../ManageServiceDetails/ManageServiceDetails';
 
 const ManageService = () => {
+
+    const [showOrders, setShowOrders] = useState([]);
+    const [showService, setShowService] = useState([]);
+    const [showReview, setShowReview] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/allOrders')
+            .then(res => res.json())
+            .then(data => {
+                setShowOrders(data);
+            })
+    }, [])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/allService')
+            .then(res => res.json())
+            .then(data => {
+                setShowService(data);
+            })
+    }, [])
+
     return (
         <div>
             <NavBar></NavBar>
@@ -11,8 +34,20 @@ const ManageService = () => {
                 <Col md={2}>
                     <SideBar></SideBar>
                 </Col>
-                <Col md={10}>
-
+                <Col className='container' md={10}>
+                    <h3>Manage Order</h3>
+                    <Row>
+                        {
+                            showOrders.map(order => <ManageOrderDetails key={order._id} order={order}></ManageOrderDetails>)
+                        }
+                    </Row>
+                    <h3>Manage Service</h3>
+                    <Row>
+                       
+                        {
+                            showService.map(service => <ManageServiceDetails key={service._id} service={service}></ManageServiceDetails>)
+                        }
+                    </Row>
                 </Col>
             </Row>
         </div>

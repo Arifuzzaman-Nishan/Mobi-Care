@@ -103,7 +103,7 @@ const ProcessPayment = ({ specificService }) => {
 
     const successFullPayment = (newOrder) => {
         console.log(newOrder);
-        fetch('http://localhost:5000/orders', {
+        fetch('https://peaceful-mesa-18274.herokuapp.com/orders', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newOrder)

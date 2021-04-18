@@ -26,7 +26,7 @@ import ServiceCard from '../ServiceCard/ServiceCard';
 const Service = () => {
 
     // useEffect(()=>{
-    //     fetch('http://localhost:5000/addService',{
+    //     fetch('https://peaceful-mesa-18274.herokuapp.com/addService',{
     //         method:'POST',
     //         headers:{'content-type' : 'application/json'},
     //         body: JSON.stringify(serviceData)
@@ -41,7 +41,7 @@ const Service = () => {
 
     const [serviceData,setServiceData] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/allService')
+        fetch('https://peaceful-mesa-18274.herokuapp.com/allService')
         .then(res => res.json())
         .then(data => {
             setServiceData(data);

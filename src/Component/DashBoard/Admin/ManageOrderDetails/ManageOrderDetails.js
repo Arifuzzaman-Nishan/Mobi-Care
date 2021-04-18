@@ -10,7 +10,7 @@ const ManageOrderDetails = ({ order }) => {
     // for delete
     const [orderHide, setOrderHide] = useState(true);
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/orderDelete/${id}`, {
+        fetch(`https://peaceful-mesa-18274.herokuapp.com/orderDelete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

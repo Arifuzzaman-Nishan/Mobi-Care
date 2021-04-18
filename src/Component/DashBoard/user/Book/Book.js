@@ -31,7 +31,7 @@ const Book = () => {
     const [specificService, setSpecificService] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/specificService/${id}`)
+        fetch(`https://peaceful-mesa-18274.herokuapp.com/specificService/${id}`)
             .then(res => res.json())
             .then(data => {
                 setSpecificService(data);

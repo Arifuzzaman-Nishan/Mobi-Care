@@ -12,7 +12,7 @@ const ManageService = () => {
     const [showReview, setShowReview] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allOrders')
+        fetch('https://peaceful-mesa-18274.herokuapp.com/allOrders')
             .then(res => res.json())
             .then(data => {
                 setShowOrders(data);
@@ -20,7 +20,7 @@ const ManageService = () => {
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:5000/allService')
+        fetch('https://peaceful-mesa-18274.herokuapp.com/allService')
             .then(res => res.json())
             .then(data => {
                 setShowService(data);

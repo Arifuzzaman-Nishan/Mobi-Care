@@ -35,11 +35,9 @@ const App = () => {
           <Route path='/home'>
             <Home></Home>
           </Route>
-
           <PrivateRoute path='/DashBoard/book/:id'>
             <Book></Book>
           </PrivateRoute>
-
           <PrivateRoute path='/DashBoard/review'>
             <Review></Review>
           </PrivateRoute>
@@ -64,6 +62,16 @@ const App = () => {
           <Route path='/login'>
             <Login></Login>
           </Route>
+          <Route path='/about_us'>
+            <Home></Home>
+          </Route>
+          <Route path='/projects'>
+            <Home></Home>
+          </Route>
+          <Route path='/contact'>
+            <Home></Home>
+          </Route>
+
           <Route exact path='/'>
             <Home></Home>
           </Route>

@@ -27,7 +27,7 @@ const AddService = () => {
 
         // // send data to the database 
 
-        fetch('http://localhost:5000/addService', {
+        fetch('https://peaceful-mesa-18274.herokuapp.com/addService', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -19,7 +19,7 @@ const ServiceCard = ({ service }) => {
             <Card onClick={() => history.push(`/DashBoard/book/${service._id}`)} className='' style={{ width: '18rem', cursor: 'pointer' }}>
                 {/* <Card.Img style={{ height: '30vh' }} variant="top" src={service.img} /> */}
                 <div  class="img-hover-zoom card">
-                    <img style={{ height: '30vh' }} className='card-img-top' src={service.img} alt=""/>
+                    <img style={{ height: '30vh'}} className='card-img-top' src={service.img} alt=""/>
                 </div>               
                 <Card.Body className='text-center'>
                     <Card.Title>{service.name}</Card.Title>

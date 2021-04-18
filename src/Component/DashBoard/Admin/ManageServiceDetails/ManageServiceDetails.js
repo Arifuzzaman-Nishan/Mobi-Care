@@ -10,7 +10,7 @@ const ManageServiceDetails = ({service}) => {
     const [serviceHide, setServiceHide] = useState(true);
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/serviceDelete/${id}`, {
+        fetch(`https://peaceful-mesa-18274.herokuapp.com/serviceDelete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

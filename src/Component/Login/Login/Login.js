@@ -42,7 +42,7 @@ const Login = () => {
                 sessionStorage.setItem('email', user.email);
                 sessionStorage.setItem('name', user.displayName);
 
-                fetch('http://localhost:5000/isAdmin', {
+                fetch('https://peaceful-mesa-18274.herokuapp.com/isAdmin', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify({ email: sessionStorage.getItem('email') })

@@ -6,7 +6,7 @@ const OrderListDetails = ({ allOrder }) => {
 
     const handleChange = (e) => {
 
-        fetch(`http://localhost:5000/update/${_id}`,{
+        fetch(`https://peaceful-mesa-18274.herokuapp.com/update/${_id}`,{
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

@@ -5,6 +5,7 @@ import SideBar from '../../SideBar/SideBar';
 import { useForm } from "react-hook-form";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import axios from 'axios';
+import Loader from 'react-loader-spinner';
 
 const AddService = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -20,7 +21,7 @@ const AddService = () => {
         const newMobileData = {
             name: data.name,
             price: data.price,
-            description:data.description,
+            description: data.description,
             img: imageURL
         }
 
@@ -42,7 +43,7 @@ const AddService = () => {
 
     // for image upload
     const handleImageUpload = (event) => {
-        console.log(event.target.files[0]);
+
 
         setSpinner(true);
         const imageData = new FormData();
@@ -69,35 +70,48 @@ const AddService = () => {
                     <SideBar></SideBar>
                 </Col>
                 <Col md={4}>
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <div style={{ display: spinner ? "block" : "none" }}>
 
-                        <div className='form-group mt-3'>
-                            <label className="text-dark" htmlFor="name">Service Title</label>
-                            <input placeholder='Enter Service Title' className='form-control' {...register("name", { required: true })} />
-                            {errors.name && <span className='text-danger'>This field is required</span>}
-                        </div>
+                        {/* spinner for image upload */}
+                        <Loader className="d-flex justify-content-center align-items-center"
+                            type="ThreeDots"
+                            color="#00BFFF"
+                            height={100}
+                            width={100}
+                        />
+                        <h1 className="text text-center">wait image is uploading....</h1>
+                    </div>
+                    <div style={{ display: spinner ? "none" : "block" }}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <div className='form-group mt-3'>
-                            <label className="text-dark" htmlFor="price">price</label>
-                            <input type='number' placeholder='Enter Price' className='form-control' {...register("price", { required: true })} />
-                            {errors.serviceTitle && <span className='text-danger'>This field is required</span>}
-                        </div>
+                            <div className='form-group mt-3'>
+                                <label className="text-dark" htmlFor="name">Service Title</label>
+                                <input placeholder='Enter Service Title' className='form-control' {...register("name", { required: true })} />
+                                {errors.name && <span className='text-danger'>This field is required</span>}
+                            </div>
 
-                        <div className="mt-3">
-                            <label className="text-dark" htmlFor="description">Description</label>
-                            <textarea cols='20' rows='5' className="form-control" type="text" placeholder="Enter description" {...register("description", { required: true })} />
-                            {errors.serviceTitle && <span className='text-danger'>This field is required</span>}
-                        </div>
-                        {/* for image upload  */}
-                        <div className="mt-3">
-                            <label className='text-dark' htmlFor="uploadPhoto">Upload Photo</label>
-                            <input className="form-control text-white" type="file" name="uploadPhoto" onChange={handleImageUpload} />
-                        </div>
-                        <div className="mt-5">
-                            <input className="btn btn-danger form-control" type="submit" value="submit" />
-                        </div>
-                        {/* <input type="submit" /> */}
-                    </form>
+                            <div className='form-group mt-3'>
+                                <label className="text-dark" htmlFor="price">price</label>
+                                <input type='number' placeholder='Enter Price' className='form-control' {...register("price", { required: true })} />
+                                {errors.serviceTitle && <span className='text-danger'>This field is required</span>}
+                            </div>
+
+                            <div className="mt-3">
+                                <label className="text-dark" htmlFor="description">Description</label>
+                                <textarea cols='20' rows='5' className="form-control" type="text" placeholder="Enter description" {...register("description", { required: true })} />
+                                {errors.serviceTitle && <span className='text-danger'>This field is required</span>}
+                            </div>
+                            {/* for image upload  */}
+                            <div className="mt-3">
+                                <label className='text-dark' htmlFor="uploadPhoto">Upload Photo</label>
+                                <input className="form-control text-white" type="file" name="uploadPhoto" onChange={handleImageUpload} />
+                            </div>
+                            <div className="mt-5">
+                                <input className="btn btn-danger form-control" type="submit" value="submit" />
+                            </div>
+                            {/* <input type="submit" /> */}
+                        </form>
+                    </div>
                 </Col>
             </Row>
         </div>

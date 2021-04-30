@@ -15,7 +15,7 @@ this website and it's dynamically showing on this website's home page testimonia
 -> Admin can show all the order lists and Admin can update the order status.\
 -> Admin can Add another service to the website.\
 -> Admin can make someone admin to the website.\
--> Also Admin can delete the order and delete the service.\
+-> Also Admin can delete the order and delete the service.
 
 ## Technology: 
 HTML, CSS, JavaScript, React, Bootstrap, Firebase Authentication, Node.js, Express.js, MongoDB, Heroku.

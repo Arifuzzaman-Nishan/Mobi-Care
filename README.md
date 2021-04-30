@@ -2,8 +2,8 @@
 
 ## Overview:
 
--> This is mainly a full-stack mobile repairing website.
--> For Log-in, Here I am using Google sign-in from firebase Authentication.
+-> This is mainly a full-stack mobile repairing website.\
+-> For Log-in, Here I am using Google sign-in from firebase Authentication.\
 -> On the Home page, the user can see different kinds of mobile servicing, and when the user orders
 service then it goes to the login page.
 -> After the login, it redirects to the payment gateway section.

@@ -1,10 +1,24 @@
 # Mobi Care
 
-## Project Description:
+## Overview:
 
-This is mobile service project. This is full stack web development project. This project created with fontEnd -> React js , backEnd -> Node js and dataBase -> MongoDb. 
-In this project there is a home page here you can see different kinds of section. In this project you can see two different access one is admin access and other is normal user access. user can book easily one service after login with payment gateway feature and user can see his/her booking list what he/she ordered and also user can review to my website. Admin can see all the user order list and can change the user order status. Admin can add service. Admin can make some one admin and Admin can delete service and user order.
-Here i add animation to the our-service section And all user review show in the testimonial section. Here Admin/user can perform login and logout feature and after refresh user/admin cannot automatically logout. 
+-> This is mainly a full-stack mobile repairing website.
+-> For Log-in, Here I am using Google sign-in from firebase Authentication.
+-> On the Home page, the user can see different kinds of mobile servicing, and when the user orders
+service then it goes to the login page.
+-> After the login, it redirects to the payment gateway section.
+-> Here I am using the stripe payment gateway. After the payment user orders the service successfully.
+-> In the user dashboard, the user can see all the order lists and order status, and also user can review
+this website and it's dynamically showing on this website's home page testimonial section.
+-> Here users can easily log out from this website.
+-> On this website, there is added another feature and that is the Admin panel.
+-> Admin can show all the order lists and Admin can update the order status.
+-> Admin can Add another service to the website.
+-> Admin can make someone admin to the website.
+-> Also Admin can delete the order and delete the service.
+
+## Technology: 
+HTML, CSS, JavaScript, React, Bootstrap, Firebase Authentication, Node.js, Express.js, MongoDB, Heroku.
 
 
 ## Link:
